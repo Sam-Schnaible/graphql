@@ -5,8 +5,16 @@ const { graphqlHTTP} = require('express-graphql');
 const app = express();
 
 const schema = buildSchema(`
-
+  type Query {
+    hello: String
+  }
 `)
+
+const root = {
+  hello: () => {
+    return 'Hello world!';
+  }
+}
 
 app.use('/graphql', graphqlHTTP({
   graphiql: true,
