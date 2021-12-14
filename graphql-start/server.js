@@ -20,6 +20,13 @@ const schema = buildSchema(`
 `)
 
 const root = {
+  getUser: () => {
+    return {
+      name: 'Sam',
+      age: 37,
+      college: 'UCSB'
+    }
+  },
   hello: () => {
     return 'Hello world!';
   },
