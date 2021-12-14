@@ -7,12 +7,17 @@ const app = express();
 const schema = buildSchema(`
   type Query {
     hello: String
+    welcomeMessage(name: String, dayOfWeek: String!): String
   }
 `)
 
 const root = {
   hello: () => {
     return 'Hello world!';
+  },
+  welcomeMessage: args => {
+    console.log(args);
+    return `Hey ${args.name}, what's up? How's your ${args.dayOfWeek}?`;
   }
 }
 
