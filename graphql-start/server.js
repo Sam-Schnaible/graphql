@@ -5,9 +5,17 @@ const { graphqlHTTP} = require('express-graphql');
 const app = express();
 
 const schema = buildSchema(`
+
+  type User {
+    name: String!
+    age: Int!
+    college: String
+  }
+
   type Query {
-    hello: String
+    hello: String!
     welcomeMessage(name: String, dayOfWeek: String!): String
+    getUser: User
   }
 `)
 
