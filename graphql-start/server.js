@@ -16,6 +16,7 @@ const schema = buildSchema(`
     hello: String!
     welcomeMessage(name: String, dayOfWeek: String!): String
     getUser: User
+    getUsers: [User]
   }
 `)
 
@@ -33,6 +34,21 @@ const root = {
   welcomeMessage: args => {
     console.log(args);
     return `Hey ${args.name}, what's up? How's your ${args.dayOfWeek}?`;
+  },
+  getUsers: () => {
+    const users = [
+      {
+        name: 'Sam',
+        age: 37,
+        college: 'UCSB'
+      },
+      {
+        name: 'Billy',
+        age: 27,
+        college: 'Stanford'
+      }
+    ]
+    return users;
   }
 }
 
